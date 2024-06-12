@@ -1,11 +1,11 @@
 function CardsContainer(index, isWinning){
 this.index = index;
 this.isWinning = isWinning;
-this.handleTry(square ,attemt, squareContainer){
+this.handleTry(square ,attempt, squareContainer){
     if(this.isWinning){
         alert("You guess correct");
         square.classList.add("square-correct")
-    }else if(attemt === 3){
+    }else if(attepmt === 3){
 squareContainer.innerHTMl = null;
 return;
     }
@@ -13,7 +13,7 @@ return;
     square.classList.add("square-wrong")
 }
 }
-const card = [
+const cards = [
     new CardsContainer(3, false),
     new CardsContainer(2, false),
     new CardsContainer(5, false),
@@ -28,9 +28,19 @@ const card = [
     new CardsContainer(13, false),
 ]
 function renderSquares(squares){
-    let attemt = 0;
+    let attempt = 0;
     const squareContainer = document.querySelector(".squares-container");
     squares.forEach((item)=>{
-        const 
+        const square = document.createElement("div");
+        const squareIndex =document.createElement("h4");
+        squareIndex.innerHTML = item.index;
+        square.appendChild(squareIndex);
+        square.classList.add("square");
+        square.addEventListener("click", ()=>
+            item.handleTry(++attempt, square, squareContainer)
+        );
+        squareContainer.appendChild(square);
+
     })
 }
+renderSquares(cards);
