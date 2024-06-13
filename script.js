@@ -1,31 +1,35 @@
-function CardsContainer(index, isWinning){
+function LotteryCard(index, isWinning){
 this.index = index;
 this.isWinning = isWinning;
-this.handleTry(square ,attempt, squareContainer){
+
+this.handleTry = function(attempt, square, squareContainer){
     if(this.isWinning){
-        alert("You guess correct");
+        alert("Congrats! You have won!");
         square.classList.add("square-correct")
-    }else if(attepmt === 3){
-squareContainer.innerHTMl = null;
-return;
+    }else {
+        if(attempt === 3){
+        
+        alert("Sorry, it was your last turn");
+        squareContainer.classList.add("none");
     }
-    alert("It is wrong");
-    square.classList.add("square-wrong")
+    alert("Sorry try one more time");
+    square.classList.add("square-wrong");
 }
+};
 }
 const cards = [
-    new CardsContainer(3, false),
-    new CardsContainer(2, false),
-    new CardsContainer(5, false),
-    new CardsContainer(1, false),
-    new CardsContainer(9, false),
-    new CardsContainer(4, false),
-    new CardsContainer(7, false),
-    new CardsContainer(12, false),
-    new CardsContainer(11, false),
-    new CardsContainer(6, false),
-    new CardsContainer(8, false),
-    new CardsContainer(13, false),
+    new LotteryCard(3, false),
+    new LotteryCard(2, false),
+    new LotteryCard(5, false),
+    new LotteryCard(1, false),
+    new LotteryCard(9, false),
+    new LotteryCard(4, false),
+    new LotteryCard(7, false),
+    new LotteryCard(12, false),
+    new LotteryCard(11, false),
+    new LotteryCard(6, true),
+    new LotteryCard(8, false),
+    new LotteryCard(13, false),
 ]
 function renderSquares(squares){
     let attempt = 0;
@@ -41,6 +45,6 @@ function renderSquares(squares){
         );
         squareContainer.appendChild(square);
 
-    })
+    });
 }
 renderSquares(cards);

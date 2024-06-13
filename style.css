@@ -1,5 +1,4 @@
 .squares-container {
-
     width: 800px;
     margin: 20px auto;
     height: 100vh;
@@ -27,4 +26,7 @@
     }
     .square-correct {
     background-color: rgb(110, 238, 37);
+    }
+    .none{
+        display: none;
     }
